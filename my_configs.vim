@@ -15,6 +15,7 @@ noremap  <expr>0     col('.') == 1 ? '^': '0'
 set mouse -=a
 highlight WhitespaceEOL ctermbg=cyan guibg=red
 match WhitespaceEOL /\s\+$/
+set cursorline
 
 "for tagbar
 nmap <F2> :TagbarToggle<CR>
