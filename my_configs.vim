@@ -19,6 +19,7 @@ set cursorline
 
 "for tagbar
 nmap <F2> :TagbarToggle<CR>
+map <F3> :NERDTreeToggle<CR>
 nnoremap <Leader>tt :TagbarToggle<cr>
 let g:tagbar_left = 1 "左侧显示
 let g:tagbar_width = 60 "宽度30,默认40
@@ -27,6 +28,8 @@ let g:tagbar_sort = 0 "不排序
 let g:tagbar_autoclose = 1 "跳转后关闭tagbar
 let g:tagbar_zoomwidth = 1 "适应宽度
 
+" disable autoapirs in markdown, which is boring when type ```
+au Filetype markdown let b:autopairs_enabled = 0
 
 let g:solarized_termtrans = 1
 

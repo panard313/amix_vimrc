@@ -46,8 +46,11 @@ nmap <c-n> <Plug>yankstack_substitute_newer_paste
 let g:ctrlp_working_path_mode = 0
 
 "let g:ctrlp_map = '<c-f>'
-map <leader>j :CtrlP<cr>
+map <leader>p :CtrlP<cr>
 "map <c-b> :CtrlPBuffer<cr>
+
+"<Leader>b显示缓冲区文件，并可通过序号进行跳转
+"nmap <Leader>b :CtrlPBuffer<CR>
 
 let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
@@ -70,7 +73,7 @@ snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
 """"""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
+let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .git'
 set grepprg=/bin/grep\ -nH
 
 
