@@ -54,6 +54,16 @@ set pastetoggle=<F12>
 " enable rainnow
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 
+" indent guide line
+" --- thanaelkane/vim-indent-guides
+"let g:indent_guides_enable_on_vim_startup = 1
+"let g:indent_guides_guide_size = 1
+"let g:indent_guides_tab_guides = 0
+" --- Yggdroot/indentLine
+let g:indentLine_color_term = 239
+let g:indentLine_char = '▏'
+
+
 " disable version warning
 let g:go_version_warning = 0
 
