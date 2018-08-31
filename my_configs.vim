@@ -17,6 +17,11 @@ highlight WhitespaceEOL ctermbg=cyan guibg=red
 match WhitespaceEOL /\s\+$/
 set cursorline
 
+if &term =~ '256color'
+  " disable Background Color Erase (BCE)
+  set t_ut=
+endif
+
 "for tagbar
 nmap <F2> :TagbarToggle<CR>
 map <F3> :NERDTreeToggle<CR>
