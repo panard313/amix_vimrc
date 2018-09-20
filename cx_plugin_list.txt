@@ -8,3 +8,4 @@ https://github.com/altercation/solarized.git
 https://github.com/majutsushi/tagbar.git
 https://github.com/MattesGroeger/vim-bookmarks.git
 https://github.com/easymotion/vim-easymotion.git
+https://github.com/zivyangll/git-blame.vim.git
