@@ -72,3 +72,6 @@ let g:go_version_warning = 0
 
 " enable neocomplcache
 let g:neocomplcache_enable_at_startup = 1
+
+" disable auto fold when open markdown document
+let g:vim_markdown_folding_disabled = 1
