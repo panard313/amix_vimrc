@@ -120,3 +120,10 @@ let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
     \ }
+
+
+" ----------git----------
+" show modified lines
+nnoremap <silent> <leader>gd :GitGutterToggle<cr>
+" show git log of current line
+nnoremap <Leader>gs :<C-u>call gitblame#echo()<CR>
