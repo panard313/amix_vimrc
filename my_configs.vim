@@ -120,6 +120,12 @@ let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
     \ }
+" exchange c-t and enter, open file in new tab by default
+" (but if use buftabline, every buf if a tab, don't need it)
+"let g:ctrlp_prompt_mappings = {
+"    \ 'AcceptSelection("e")': ['<c-t>'],
+"    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+"    \ }
 
 
 " ----------git----------
@@ -127,3 +133,12 @@ let g:ctrlp_custom_ignore = {
 nnoremap <silent> <leader>gd :GitGutterToggle<cr>
 " show git log of current line
 nnoremap <Leader>gs :<C-u>call gitblame#echo()<CR>
+
+
+" ----------buf tab line----------
+" show every buffer as tab
+set hidden
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
+nnoremap <Leader>bn :bnext<CR>
+nnoremap <Leader>bb :bprev<CR>
