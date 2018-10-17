@@ -36,10 +36,19 @@ nnoremap <leader>ev :vsplit ~/.vim_runtime/my_configs.vim<cr>
 
 
 " ----------highlight----------
+"  highlight blank EOL
 highlight WhitespaceEOL ctermbg=cyan guibg=red
 match WhitespaceEOL /\s\+$/
+
+" highlight current line
 set cursorline
+
 let g:solarized_termtrans = 1
+
+" highlight tabs
+highlight SpecialKey ctermfg=red
+set list
+set listchars=tab:T>
 
 " disable Background Color Erase (BCE)
 if &term =~ '256color'
