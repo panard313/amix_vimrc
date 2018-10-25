@@ -137,11 +137,13 @@ let g:ctrlp_custom_ignore = {
 "    \ }
 
 
-" ----------git----------
+" ----------gitgutter----------
 " show modified lines
 nnoremap <silent> <leader>gd :GitGutterToggle<cr>
 " show git log of current line
 nnoremap <Leader>gs :<C-u>call gitblame#echo()<CR>
+" max sign lines
+let g:gitgutter_max_signs = 1000
 
 
 " ----------buf tab line----------
