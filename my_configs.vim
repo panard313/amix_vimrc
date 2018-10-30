@@ -82,6 +82,12 @@ let g:pymode_python = 'python2'
 " disable version warning
 let g:go_version_warning = 0
 
+" ----------fold----------
+" disable fold by default
+let g:foldenable = 0
+" map <Leader>z to enable fold, and set foldmethod to indent
+nnoremap <Leader>z :set foldenable<cr>:set foldmethod=indent<cr>zR
+
 
 
 " --------------------plugin settings--------------------
