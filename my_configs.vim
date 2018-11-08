@@ -89,8 +89,14 @@ let g:foldenable = 0
 nnoremap <Leader>z :set foldenable<cr>:set foldmethod=indent<cr>zR
 
 
+" ----------comment----------
+nnoremap <leader>bo :set paste<cr>o// Task-7097997-BEGIN xiong.chen@tcl.com disable SmartManager, enable DuraSpeed<esc>:set nopaste<cr><S-v>=
+nnoremap <leader>bp :set paste<cr>o// Task-7097997-end xiong.chen@tcl.com disable SmartManager, enable DuraSpeed<esc>:set nopaste<cr><S-v>=
 
-" --------------------plugin settings--------------------
+
+
+
+" ----------------------------------------plugin settings----------------------------------------
 
 " ----------tagbar----------
 nnoremap <F2> :TagbarToggle<CR>
@@ -159,3 +165,5 @@ nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bb :bprev<CR>
+
+
