@@ -35,6 +35,12 @@ nnoremap <Leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ev :vsplit ~/.vim_runtime/my_configs.vim<cr>
 
 
+" ----------encoding----------
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+
+
 " ----------highlight----------
 "  highlight blank EOL
 highlight WhitespaceEOL ctermbg=cyan guibg=red
