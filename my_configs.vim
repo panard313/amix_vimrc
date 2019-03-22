@@ -49,6 +49,10 @@ match WhitespaceEOL /\s\+$/
 " highlight current line
 set cursorline
 
+" highlight current column
+set cursorcolumn
+highlight CursorColumn cterm=NONE ctermbg=black ctermfg=NONE guibg=NONE guifg=NONE
+
 let g:solarized_termtrans = 1
 
 " highlight tabs
