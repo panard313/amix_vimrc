@@ -29,6 +29,14 @@ inoremap jk <Right>
 " move to head or none blank
 nnoremap <expr>0     col('.') == 1 ? '^': '0'
 
+" quick head or tail
+nnoremap <space>h ^
+nnoremap <space>l $
+
+" move half page
+nnoremap <space>j <C-d>
+nnoremap <space>k <C-u>
+
 
 " ----------edit vimrc----------
 nnoremap <Leader>sv :source $MYVIMRC<cr>
