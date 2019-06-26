@@ -64,9 +64,33 @@ highlight CursorColumn cterm=NONE ctermbg=black ctermfg=NONE guibg=NONE guifg=NO
 let g:solarized_termtrans = 1
 
 " highlight tabs
-highlight SpecialKey ctermfg=red
-set list
-set listchars=tab:T>
+" SeeTab: toggles between showing tabs and using standard listchars
+" press F9 to enable Specialkey highlight
+nnoremap <F9> :call SeeTab()<CR>
+autocmd BufReadPost * call SeeTab()
+
+fu! SeeTab()
+  if !exists("g:SeeTabEnabled")
+    let g:SeeTabEnabled = 1
+    let g:SeeTab_list = &list
+    let g:SeeTab_listchars = &listchars
+    let regA = @a
+    redir @a
+    silent hi SpecialKey
+    redir END
+    let g:SeeTabSpecialKey = @a
+    let @a = regA
+    silent! hi SpecialKey guifg=black guibg=magenta ctermfg=black ctermbg=magenta
+    set list
+    set listchars=tab:\|\
+  else
+    let &list = g:SeeTab_list
+    let &listchars = &listchars
+    silent! exe "hi ".substitute(g:SeeTabSpecialKey,'xxx','','e')
+    unlet g:SeeTabEnabled g:SeeTab_list g:SeeTab_listchars
+  endif
+endfunc
+com! -nargs=0 SeeTab :call SeeTab()
 
 " disable Background Color Erase (BCE)
 if &term =~ '256color'
