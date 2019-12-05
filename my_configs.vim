@@ -171,7 +171,11 @@ let g:neocomplcache_enable_at_startup = 1
 
 " ----------Markdown----------
 " disable auto fold when open markdown document
-let g:vim_markdown_folding_disabled = 1
+" when open, zM to fold all, zR to open all, ]] to next
+"let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_level = 3
+" conceal conceal [link text](link url) as just link text
+let g:vim_markdown_conceal = 0
 " disable autoapirs in markdown, which is boring when type ```
 au Filetype markdown let b:autopairs_enabled = 0
 
