@@ -10,3 +10,5 @@ https://github.com/MattesGroeger/vim-bookmarks.git
 https://github.com/easymotion/vim-easymotion.git
 https://github.com/zivyangll/git-blame.vim.git
 https://github.com/ap/vim-buftabline.git
+https://github.com/luochen1990/rainbow
+https://github.com/jaxbot/semantic-highlight.vim.git

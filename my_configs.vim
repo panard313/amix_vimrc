@@ -16,6 +16,7 @@ nnoremap <Leader>qa :qa<cr>
 nnoremap <Leader>fw :w<cr>
 nnoremap <Leader>fq :q<cr>
 
+nnoremap <F5> :update<CR>:source %<CR>
 
 " ----------insert mode map----------
 inoremap jj <esc>
@@ -66,8 +67,8 @@ let g:solarized_termtrans = 1
 " highlight tabs
 " SeeTab: toggles between showing tabs and using standard listchars
 " press F9 to enable Specialkey highlight
-nnoremap <F9> :call SeeTab()<CR>
-autocmd BufReadPost * call SeeTab()
+"nnoremap <F9> :call SeeTab()<CR>
+"autocmd BufReadPost * call SeeTab()
 
 fu! SeeTab()
   if !exists("g:SeeTabEnabled")
@@ -93,13 +94,18 @@ endfunc
 com! -nargs=0 SeeTab :call SeeTab()
 
 " disable Background Color Erase (BCE)
-if &term =~ '256color'
+if &term =~ 'xterm-256color'
   " disable Background Color Erase (BCE)
   set t_ut=
 endif
 
 " highlight search result
 set hlsearch "search highlight"
+
+" semantic highlight
+nnoremap <Leader>c :SemanticHighlightToggle<cr>
+nnoremap <Leader>cc :SemanticHighlightRevert<cr>
+let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,8,125,124,27]
 
 
 " ----------indent----------
@@ -132,8 +138,8 @@ nnoremap <Leader>z :set foldenable<cr>:set foldmethod=indent<cr>zR
 
 
 " ----------comment----------
-nnoremap <leader>bo :set paste<cr>o// Task-7097997-BEGIN xiong.chen@tcl.com disable SmartManager, enable DuraSpeed<esc>:set nopaste<cr><S-v>=
-nnoremap <leader>bp :set paste<cr>o// Task-7097997-end xiong.chen@tcl.com disable SmartManager, enable DuraSpeed<esc>:set nopaste<cr><S-v>=
+nnoremap <leader>bo :set paste<cr>o// Task-8976913 Add begin by chenxiong@tcl.com 20200304, fix app lunch slow after fota<esc>:set nopaste<cr><S-v>=
+nnoremap <leader>bp :set paste<cr>o// Task-8976913 Add end by chenxiong@tcl.com 20200304, fix app lunch slow after fota<esc>:set nopaste<cr><S-v>=
 
 
 
