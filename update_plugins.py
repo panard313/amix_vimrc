@@ -71,6 +71,15 @@ SOURCE_DIR = path.join(path.dirname(__file__), "sources_non_forked")
 
 
 def download_extract_replace(plugin_name, zip_path, temp_dir, source_dir):
+    # CX____ add proxy
+    if true:
+        # Set up the proxy
+        proxy = urllib.request.ProxyHandler({'https': '192.168.31.169:7890'})
+        # Create a new opener using the proxy
+        opener = urllib.request.build_opener(proxy)
+        # Install the opener
+        urllib.request.install_opener(opener)
+
     # Download and extract file in temp dir
     with urllib.request.urlopen(zip_path) as req:
         zip_f = zipfile.ZipFile(BytesIO(req.read()))
