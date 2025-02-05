@@ -8,6 +8,14 @@ set wrap
 " disable mouse
 set mouse -=a
 
+colorscheme onedark
+
+" tab indent
+"set autoindent
+"set noexpandtab
+"set tabstop=4
+"set shiftwidth=4
+
 
 " ----------quick save file----------
 nnoremap <Leader>w :w<cr>
@@ -26,6 +34,26 @@ inoremap jk <Right>
 " inoremap <esc> <nop>
 
 
+" ----------status line indent stat----------
+set noshowmode
+
+let g:lightline = {
+      \   'active': {
+      \     'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'], ['indent']]
+      \   },
+      \   'component': {
+      \     'indent': '%{&expandtab?"SPACE |":"TAB |"}',
+      \   },
+      \   'colorscheme': 'deus',
+      \ }
+
+autocmd FileType c setlocal noexpandtab
+
+
+" ----------insert mode map----------
+vnoremap <Leader>y "+y
+
+
 " ----------motion----------
 " move to head or none blank
 nnoremap <expr>0     col('.') == 1 ? '^': '0'
@@ -37,6 +65,10 @@ nnoremap <space>l $
 " move half page
 nnoremap <space>j <C-d>
 nnoremap <space>k <C-u>
+
+" prev and next position
+nnoremap <C-1> <C-o>
+nnoremap <C-2> <C-i>
 
 
 " ----------edit vimrc----------
@@ -64,7 +96,7 @@ highlight CursorColumn cterm=NONE ctermbg=black ctermfg=NONE guibg=NONE guifg=NO
 
 let g:solarized_termtrans = 1
 
-" highlight tabs
+" ----------highlight tabs----------
 " SeeTab: toggles between showing tabs and using standard listchars
 " press F9 to enable Specialkey highlight
 "nnoremap <F9> :call SeeTab()<CR>
@@ -92,6 +124,26 @@ fu! SeeTab()
   endif
 endfunc
 com! -nargs=0 SeeTab :call SeeTab()
+
+
+" ----------toggle indent tabs----------
+" 切换indent缩进用table还是空格
+function! ToggleIndent()
+  if &expandtab
+    set noexpandtab
+    set tabstop=4
+    set shiftwidth=4
+    echo "Indent with tab"
+  else
+    set expandtab
+    set tabstop=4
+    set shiftwidth=4
+    echo "Indent with spaces"
+  endif
+endfunction
+
+command! ToggleIndent call ToggleIndent()
+nnoremap <Leader>ti :ToggleIndent<cr>
 
 " disable Background Color Erase (BCE)
 if &term =~ 'xterm-256color'
@@ -138,8 +190,8 @@ nnoremap <Leader>z :set foldenable<cr>:set foldmethod=indent<cr>zR
 
 
 " ----------comment----------
-nnoremap <leader>bo :set paste<cr>o// Task-8976913 Add begin by chenxiong@tcl.com 20200304, fix app lunch slow after fota<esc>:set nopaste<cr><S-v>=
-nnoremap <leader>bp :set paste<cr>o// Task-8976913 Add end by chenxiong@tcl.com 20200304, fix app lunch slow after fota<esc>:set nopaste<cr><S-v>=
+nnoremap <leader>bo :set paste<cr>o// Task-8976913 Add begin by chenxiong 20200304, fix app lunch slow after fota<esc>:set nopaste<cr><S-v>=
+nnoremap <leader>bp :set paste<cr>o// Task-8976913 Add end by chenxiong 20200304, fix app lunch slow after fota<esc>:set nopaste<cr><S-v>=
 
 
 
@@ -155,6 +207,7 @@ let g:tagbar_autofocus = 1 "打开后光标置于tarbar
 let g:tagbar_sort = 0 "不排序
 let g:tagbar_autoclose = 1 "跳转后关闭tagbar
 let g:tagbar_zoomwidth = 1 "适应宽度
+let g:tagbar_highlight_follow_insert = 1 "follow cursor
 
 
 " ----------NerdTree----------
@@ -169,7 +222,7 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 
 " ----------auto complete----------
 " enable neocomplete
-"let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_at_startup = 1
 
 " enable neocomplcache
 let g:neocomplcache_enable_at_startup = 1
@@ -186,9 +239,14 @@ let g:vim_markdown_conceal = 0
 au Filetype markdown let b:autopairs_enabled = 0
 
 
+" ----------html----------
+au FileType html setlocal syntax=OFF
+
+
 " ----------Ctrlp----------
 let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_by_filename = 1
+let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
@@ -203,9 +261,9 @@ let g:ctrlp_custom_ignore = {
 
 " ----------gitgutter----------
 " show modified lines
-nnoremap <silent> <leader>gd :GitGutterToggle<cr>
+nnoremap <silent> <leader>d :GitGutterToggle<cr>
 " show git log of current line
-nnoremap <Leader>gs :<C-u>call gitblame#echo()<CR>
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 " max sign lines
 let g:gitgutter_max_signs = 1000
 
@@ -219,3 +277,33 @@ nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bb :bprev<CR>
 
 
+" ----------remove whitespace tail----------
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+command! TrimWhitespace call TrimWhitespace()
+nnoremap <Leader>rb :TrimWhitespace<cr>
+
+
+" ----------MRU----------
+let MRU_File = $HOME/.cache/.vim_mru_files
+let MRU_Max_Entries = 100
+
+
+" ----------vim-cpp-modern----------
+" To enable member highlight, install "https://github.com/sheerun/vim-polyglot",
+" and copy "https://github.com/bfrg/vim-cpp-modern/blob/master/after/syntax/{c.vim, cpp.vim}" override
+"let g:cpp_function_highlight = 0
+
+" Enable highlighting of C++11 attributes
+let g:cpp_attributes_highlight = 1
+
+" Highlight struct/class member variables (affects both C and C++ files)
+let g:cpp_member_highlight = 1
+
+" Put all standard C and C++ keywords under Vim's highlight group 'Statement'
+" (affects both C and C++ files)
+let g:cpp_simple_highlight = 1

@@ -12,3 +12,4 @@ https://github.com/zivyangll/git-blame.vim.git
 https://github.com/ap/vim-buftabline.git
 https://github.com/luochen1990/rainbow
 https://github.com/jaxbot/semantic-highlight.vim.git
+https://github.com/lfv89/vim-interestingwords.git
