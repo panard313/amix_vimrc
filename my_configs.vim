@@ -289,7 +289,7 @@ nnoremap <Leader>rb :TrimWhitespace<cr>
 
 
 " ----------MRU----------
-let MRU_File = $HOME/.cache/.vim_mru_files
+"let MRU_File = $HOME/.cache/.vim_mru_files
 let MRU_Max_Entries = 100
 
 
